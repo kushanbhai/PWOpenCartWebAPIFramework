@@ -1,0 +1,48 @@
+{
+  "name": "pw2026_framework_opencart",
+  "version": "1.0.0",
+  "description": "This is the open cart framework for playwright",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npx playwright test",
+    "test: headed": "npx playwright test --headed",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:critical": "playwright test --grep @critical",
+    "test:no-flaky": "playwright test --grep-invert @flaky",
+    "test:dev": "npx playwright test --config=playwright.config.dev.ts",
+    "test:qa": "npx playwright test --config=playwright.config.qa.ts",
+    "test:stage": "npx playwright test --config=playwright.config.stage.ts",
+    "test:prod": "npx playwright test --config=playwright.config.ts",
+    "lint": "eslint . --ext .ts,.js --report-unused-disable-directives",
+    "lint:fix": "eslint . --ext .ts,.js --fix",
+    "lint:report": "eslint . --ext .ts,.js -f html -o eslint-report/index.html || exit 0",
+    "lint:report:json": "eslint . --ext .ts,.js -f json -o eslint-report/eslint-results.json || exit 0",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open allure-report",
+    "allure:clean": "rimraf allure-results allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "format": "prettier --write . && npm run lint:fix",
+    "prepublishOnly": "npm run build",
+    "publish:nexus": "npm publish --registry=http://localhost:8081/repository/npm-private/"
+  },
+  "keywords": [],
+  "author": "Kushan Playwright",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "rimraf": "^6.1.3"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "csv-parse": "^7.0.1",
+    "dotenv": "^17.4.2",
+    "jsonpath-plus": "^10.4.0",
+    "xlsx": "^0.18.5"
+  }
+}
