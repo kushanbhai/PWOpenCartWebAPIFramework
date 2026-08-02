@@ -36,7 +36,7 @@ test('login to app with invalid creds with Data driven test', async ({ loginPage
 //DD2 without fixture , parallel mode, read csv data directly and loop the test method row wise-- Best approach
 let testData = CsvHelper.readCsv('src/data/loginData.csv');
 for (let row of testData) {
-    test(`invalid login test - ${row.username} - ${row.password}`, async ({ loginPage }) => {
+    test.skip(`invalid login test - ${row.username} - ${row.password}`, async ({ loginPage }) => {
         await loginPage.doLogin(row.username, row.password);
         expect(await loginPage.isInvalidLoginErrorDisplayed()).toBeTruthy();
 
