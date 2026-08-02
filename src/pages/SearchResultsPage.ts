@@ -16,7 +16,11 @@ export class SearchResultsPage extends BasePage {
     }
 
     async selectProduct(productName: string): Promise<void> {
-        await this.page.getByRole('link', { name: productName, exact: true }).first().click();
+        const productLink = this.page.getByRole('link', { name: productName });
+        if (await productLink.count() === 0) {
+            throw new Error(`Product link "${productName}" not found in search results`);
+        }
+        await productLink.first().click();
     }
 
 }
