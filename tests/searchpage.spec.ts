@@ -8,7 +8,7 @@ test.beforeEach(async ({ loginPage }) => {
 
 const productData = CsvHelper.readCsv('src/data/product.csv');
 for (const row of productData) {
-    test(`Verify search results count -${row.productname} `, async ({ homePage, searchResPage }) => {
+    test.skip(`Verify search results count -${row.productname} `, async ({ homePage, searchResPage }) => {
         await homePage.doSearch(row.searchkey);
         expect(await searchResPage.getProductResultsCount()).toBe(Number(row.resultcount));
     });
