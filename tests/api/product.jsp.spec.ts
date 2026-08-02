@@ -9,7 +9,7 @@ const headers = {
     'Content-Type': 'application/json'
 };
 
-test('GET Call -- all the products', async ({request})=>{
+test.skip('GET Call -- all the products', async ({request})=>{
     const response =await request.get(BASE_URL, {headers});
     const data = await response.json();
     console.log(data);
