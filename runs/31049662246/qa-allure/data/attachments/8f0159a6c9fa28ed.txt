@@ -1,0 +1,6 @@
+URL: https://gorest.co.in/public/v2/users/8570398
+Headers: {
+  Authorization: 'Bearer ecb773a6bf2a5691e8e78c7d24bca27db0feb131f395e8b5fe857927279b8609'
+}
+Status: 200
+Response: {"id":8570398,"name":"Kushan API Updated","email":"automation_1785966195956@open.com","gender":"male","status":"active"}

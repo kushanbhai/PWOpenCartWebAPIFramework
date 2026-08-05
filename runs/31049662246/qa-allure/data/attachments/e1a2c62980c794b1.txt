@@ -1,0 +1,8 @@
+{
+  id: 8570401,
+  name: 'Kushan API Auto',
+  email: 'automation_1785966200403@open.com',
+  gender: 'male',
+  status: 'inactive'
+}
+created userID is: 8570401

@@ -1,0 +1,72 @@
+[
+  {
+    id: 8570400,
+    name: 'schema test',
+    email: 'automation_1785966198853@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8570398,
+    name: 'Kushan API Updated',
+    email: 'automation_1785966195956@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8570397,
+    name: 'Kushan API Auto',
+    email: 'automation_1785966194199@open.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 8570390,
+    name: 'Ravi',
+    email: 'automation_1785962922624@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8570388,
+    name: 'schema test',
+    email: 'automation_1785962921155@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8570387,
+    name: 'Kushan API Updated',
+    email: 'automation_1785962919843@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8570385,
+    name: 'Kushan API Auto',
+    email: 'automation_1785962918273@open.com',
+    gender: 'male',
+    status: 'inactive'
+  },
+  {
+    id: 8567978,
+    name: 'Ravi',
+    email: 'automation_1785882803077@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8567975,
+    name: 'schema test',
+    email: 'automation_1785882801595@open.com',
+    gender: 'male',
+    status: 'active'
+  },
+  {
+    id: 8567972,
+    name: 'Kushan API Updated',
+    email: 'automation_1785882800635@open.com',
+    gender: 'male',
+    status: 'active'
+  }
+]
