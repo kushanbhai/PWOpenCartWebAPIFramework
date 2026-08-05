@@ -5,7 +5,7 @@ test.beforeEach(async ({loginPage})=>{
     await loginPage.doLogin(process.env.APP_USERNAME!,process.env.APP_PASSWORD!);
 })
 
-test('Home page title test', async ({homePage}) =>{
+test('@smoke Home page title test', async ({homePage}) =>{
     let pageTitle = await homePage.getPageTitle();
     expect(pageTitle).toBe('My Account');
 });
