@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","42283","@smoke Home page title test","chromium","2026-08-05","broken","2026-08-05","","homepagefix.spec.ts","",""
+"","40202","@smoke Login page title test","chromium","2026-08-05","broken","2026-08-05","","loginpagefix.spec.ts","",""
