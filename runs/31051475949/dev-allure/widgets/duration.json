@@ -1,0 +1,1 @@
+[{"uid":"93615aebeedb74e0","name":"@smoke Home page title test","time":{"start":1785967668108,"stop":1785967671477,"duration":3369},"status":"passed","severity":"normal"},{"uid":"b337012e3bd48b11","name":"@smoke Login page title test","time":{"start":1785967668310,"stop":1785967670840,"duration":2530},"status":"passed","severity":"normal"}]
