@@ -1,0 +1,9 @@
+{
+  id: 8570390,
+  name: 'Ravi',
+  email: 'automation_1785962922624@open.com',
+  gender: 'male',
+  status: 'active'
+}
+201
+Created
