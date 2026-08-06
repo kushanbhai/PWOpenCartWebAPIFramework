@@ -600,8 +600,8 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          APP_USERNAME: ${{ secrets.APP_USERNAME }}
-          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "🎭 CI/CD Pipeline — ${{ steps.status.outputs.overall }} — ${{ github.ref_name }}"
           to: kushanchow3@gmail.com
           from: "CI Bot <${{ secrets.EMAIL_USERNAME }}>"
