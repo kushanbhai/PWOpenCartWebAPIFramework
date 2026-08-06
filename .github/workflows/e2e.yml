@@ -226,9 +226,9 @@ jobs:
           path: allure-report/
           retention-days: 30
 
-  ═════════════════════════════════════════════════════
-  STEP 4: DEPLOY STAGE + SANITY TESTS
-  ═════════════════════════════════════════════════════
+  # ═════════════════════════════════════════════════════
+  # STEP 4: DEPLOY STAGE + SANITY TESTS
+  # ═════════════════════════════════════════════════════
   deploy-stage:
     name: Deploy to STAGE
     needs: regression-qa
