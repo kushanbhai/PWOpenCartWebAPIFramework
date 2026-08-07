@@ -56,7 +56,7 @@ pipeline {
                 dir('dev-app') {
                     git url: 'https://github.com/jglick/simple-maven-project-with-tests.git',
                         branch: 'master'
-                    sh 'mvn clean install -Dmaven.test.failure.ignore=true'
+                    bat 'mvn clean install -Dmaven.test.failure.ignore=true'
                 }
             }
             post {
@@ -76,9 +76,9 @@ pipeline {
                 dir('qa-tests') {
                     git url: 'https://github.com/kushanbhai/PWOpenCartWebAPIFramework.git',
                         branch: 'main'
-                    sh "docker build -t ${DOCKER_IMAGE} ."
+                    bat "docker build -t ${DOCKER_IMAGE} ."
                 }
-                sh "docker images | grep ${DOCKER_IMAGE}"
+                bat "docker images | grep ${DOCKER_IMAGE}"
             }
         }
 
@@ -96,7 +96,7 @@ pipeline {
                 echo "========================================="
                 echo "  Running SANITY @smoke on DEV (Docker)"
                 echo "========================================="
-                sh 'mkdir -p reports-dev/html allure-results-dev'
+                bat 'mkdir -p reports-dev/html allure-results-dev'
                 withCredentials([
                     usernamePassword(credentialsId: 'dev-credentials',
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -106,7 +106,7 @@ pipeline {
                     string(credentialsId: 'dev-base-url', variable: 'BASE_URL'),
                     string(credentialsId: 'api-base-url', variable: 'API_BASE_URL')
                 ]) {
-                    sh """
+                    bat """
                         docker run --rm \
                             -e CI=true \
                             -e ENV=dev \
@@ -127,8 +127,8 @@ pipeline {
             }
             post {
                 always {
-                    sh 'mkdir -p reports-dev/allure'
-                    sh 'npx allure generate allure-results-dev --clean -o reports-dev/allure || true'
+                    bat 'mkdir -p reports-dev/allure'
+                    bat 'npx allure generate allure-results-dev --clean -o reports-dev/allure || true'
                     publishHTML(target: [
                         reportName: 'DEV Sanity - PW HTML Report',
                         reportDir: 'reports-dev/html',
@@ -161,7 +161,8 @@ pipeline {
                 echo "========================================="
                 echo "  Running REGRESSION on QA (Docker)"
                 echo "========================================="
-                sh 'mkdir -p reports-qa/html allure-results-qa'
+                bat 'if not exist reports-qa\\html mkdir reports-qa\\html'
+                bat 'if not exist allure-results-qa mkdir allure-results-qa'
                 withCredentials([
                     usernamePassword(credentialsId: 'qa-credentials',
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -171,7 +172,7 @@ pipeline {
                     string(credentialsId: 'qa-base-url', variable: 'BASE_URL'),
                     string(credentialsId: 'api-base-url', variable: 'API_BASE_URL')
                 ]) {
-                    sh """
+                    bat """
                         docker run --rm \
                             -e CI=true \
                             -e ENV=qa \
@@ -192,8 +193,8 @@ pipeline {
             }
             post {
                 always {
-                    sh 'mkdir -p reports-qa/allure'
-                    sh 'npx allure generate allure-results-qa --clean -o reports-qa/allure || true'
+                    bat 'mkdir -p reports-qa/allure'
+                    bat 'npx allure generate allure-results-qa --clean -o reports-qa/allure || true'
                     publishHTML(target: [
                         reportName: 'QA Regression - PW HTML Report',
                         reportDir: 'reports-qa/html',
@@ -226,7 +227,7 @@ pipeline {
                 echo "========================================="
                 echo "  Running SANITY @smoke on STAGE (Docker)"
                 echo "========================================="
-                sh 'mkdir -p reports-stage/html allure-results-stage'
+                bat 'mkdir -p reports-stage/html allure-results-stage'
                 withCredentials([
                     usernamePassword(credentialsId: 'stage-credentials',
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -236,7 +237,7 @@ pipeline {
                     string(credentialsId: 'stage-base-url', variable: 'BASE_URL'),
                     string(credentialsId: 'api-base-url', variable: 'API_BASE_URL')
                 ]) {
-                    sh """
+                    bat """
                         docker run --rm \
                             -e CI=true \
                             -e ENV=stage \
@@ -257,8 +258,8 @@ pipeline {
             }
             post {
                 always {
-                    sh 'mkdir -p reports-stage/allure'
-                    sh 'npx allure generate allure-results-stage --clean -o reports-stage/allure || true'
+                    bat 'mkdir -p reports-stage/allure'
+                    bat 'npx allure generate allure-results-stage --clean -o reports-stage/allure || true'
                     publishHTML(target: [
                         reportName: 'STAGE Sanity - PW HTML Report',
                         reportDir: 'reports-stage/html',
@@ -299,7 +300,7 @@ pipeline {
                 echo "========================================="
                 echo "  Running SMOKE @smoke on PROD (Docker)"
                 echo "========================================="
-                sh 'mkdir -p reports-prod/html allure-results-prod'
+                bat 'mkdir -p reports-prod/html allure-results-prod'
                 withCredentials([
                     usernamePassword(credentialsId: 'prod-credentials',
                         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD'),
@@ -309,7 +310,7 @@ pipeline {
                     string(credentialsId: 'prod-base-url', variable: 'BASE_URL'),
                     string(credentialsId: 'api-base-url', variable: 'API_BASE_URL')
                 ]) {
-                    sh """
+                    bat """
                         docker run --rm \
                             -e CI=true \
                             -e ENV=prod \
@@ -330,8 +331,8 @@ pipeline {
             }
             post {
                 always {
-                    sh 'mkdir -p reports-prod/allure'
-                    sh 'npx allure generate allure-results-prod --clean -o reports-prod/allure || true'
+                    bat 'mkdir -p reports-prod/allure'
+                    bat 'npx allure generate allure-results-prod --clean -o reports-prod/allure || true'
                     publishHTML(target: [
                         reportName: 'PROD Smoke - PW HTML Report',
                         reportDir: 'reports-prod/html',
@@ -419,7 +420,7 @@ pipeline {
             }
 
             // Cleanup Docker image after pipeline
-            sh "docker rmi ${DOCKER_IMAGE} || true"
+            bat "docker rmi ${DOCKER_IMAGE} || true"
         }
         success {
             echo '═══════════════════════════════════════════'
