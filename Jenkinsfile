@@ -77,7 +77,7 @@ pipeline {
                 dir('qa-tests') {
                     git url: 'https://github.com/kushanbhai/PWOpenCartWebAPIFramework.git',
                         branch: 'main'
-                    sh 'npm ci'
+                    bat 'npm ci'
                     sh 'npx playwright install --with-deps chromium'
                 }
             }
